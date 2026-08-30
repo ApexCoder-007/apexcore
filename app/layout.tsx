@@ -1,11 +1,46 @@
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
+import { Inter, Space_Grotesk } from 'next/font/google'
 import './globals.css'
 
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+  display: 'swap',
+})
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ['latin'],
+  variable: '--font-space-grotesk',
+  display: 'swap',
+})
+
 export const metadata: Metadata = {
-  title: 'v0 App',
-  description: 'Created with v0',
+  title: 'The Journey — What Happens When You Click?',
+  description:
+    'An interactive digital exhibition that makes the invisible journey of internet data visible. Watch your clicks, messages, images and videos travel as animated packets through a living global network.',
   generator: 'v0.app',
+  keywords: [
+    'internet data journey',
+    'how the internet works',
+    'network visualization',
+    'data packets',
+    'interactive exhibition',
+    'data travels through the internet',
+  ],
+  authors: [{ name: 'The Journey' }],
+  openGraph: {
+    title: 'The Journey — What Happens When You Click?',
+    description:
+      'Make the invisible journey of internet data visible. An interactive, cinematic network simulation.',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'The Journey — What Happens When You Click?',
+    description:
+      'Make the invisible journey of internet data visible. An interactive, cinematic network simulation.',
+  },
   icons: {
     icon: [
       {
@@ -26,11 +61,10 @@ export const metadata: Metadata = {
 }
 
 export const viewport: Viewport = {
-  colorScheme: 'light dark',
-  themeColor: [
-    { media: '(prefers-color-scheme: light)', color: 'white' },
-    { media: '(prefers-color-scheme: dark)', color: 'black' },
-  ],
+  colorScheme: 'dark',
+  themeColor: '#06080f',
+  width: 'device-width',
+  initialScale: 1,
 }
 
 export default function RootLayout({
@@ -39,8 +73,11 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
-      <body className="antialiased">
+    <html
+      lang="en"
+      className={`dark bg-background ${inter.variable} ${spaceGrotesk.variable}`}
+    >
+      <body className="min-h-screen bg-background font-sans text-foreground antialiased">
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
