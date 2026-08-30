@@ -1,16 +1,31 @@
+import SiteNav from "@/components/journey/site-nav"
+import Hero from "@/components/journey/hero"
+import Intro from "@/components/journey/intro"
+import Experience from "@/components/journey/experience"
+import FollowJourney from "@/components/journey/follow-journey"
+import InvisibleVisible from "@/components/journey/invisible-visible"
+import { FinalCta } from "@/components/journey/final-cta"
+import { SiteFooter } from "@/components/journey/site-footer"
+
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center font-sans">
-      <main className="flex w-full max-w-3xl flex-col items-center gap-8 px-6 py-16 text-center sm:items-start sm:text-left">
-        <div className="flex flex-col gap-4">
-          <h1 className="text-4xl font-bold tracking-tight">
-            Website competition 2026
-          </h1>
-          <p className="max-w-md text-lg text-muted-foreground">
-            To get started, send a prompt or modify this page directly.
-          </p>
-        </div>
+    <>
+      <a
+        href="#simulation"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-md focus:bg-primary focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-primary-foreground"
+      >
+        Skip to simulation
+      </a>
+      <SiteNav />
+      <main>
+        <Hero />
+        <Intro />
+        <Experience />
+        <FollowJourney />
+        <InvisibleVisible />
+        <FinalCta />
       </main>
-    </div>
-  );
+      <SiteFooter />
+    </>
+  )
 }
